@@ -1,0 +1,26 @@
+.custom-navbar {
+    background: linear-gradient(90deg, rgba(157,154,217,1) 0%, rgba(31,22,182,1) 100%);
+}
+
+.custom-btn {
+    background: rgba(31,22,182,1);
+    color: white;
+}
+
+.custom-btn:hover {
+    background: #74787bb6;
+    color: white;
+    font-weight: 600;
+    border-color: #74787b5f;
+    box-shadow: 2px 2px 2px 1px #181b1d39;
+
+}
+
+.custom-card {
+    background: #2f384dd9;
+}
+
+.custom-city-btn {
+    background: #b6bcc2;
+    border-color: #b6bcc2;
+}
