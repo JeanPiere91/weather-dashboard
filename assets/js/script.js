@@ -1,3 +1,22 @@
+// Reads Weather Cities from local storage and returns array of Weather Cities objects.
+// Returns an empty array ([]) if there aren't any Weather Cities.
+
+function readWeatherCitiesFromStorage() {
+    var weatherCities = localStorage.getItem('weatherCities');
+    if (weatherCities) {
+        weatherCities = JSON.parse(weatherCities);
+    } else {
+        weatherCities = [];
+    }
+    return weatherCities;
+}
+
+// Save data within local storage
+function saveCitiesWeatherToStorage(weatherCities) {
+    localStorage.setItem('weatherCities', JSON.stringify(weatherCities));
+}
+
+// Normalize data response from API
 function normalizeData(data){
     /* Get hour to get information for the next days*/
     var hour = dayjs(data.list[0].dt_txt).format('HH')
@@ -9,9 +28,9 @@ function normalizeData(data){
             var weather = {
                 date: dayjs(data.list[i].dt_txt).format('MM/DD/YY'),
                 ico: 'https://openweathermap.org/img/wn/'+ data.list[i].weather[0].icon+'@2x.png',
-                temp: convertToDegreesFahrenheit(data.list[i].main.temp) + ' °F', //'76.62°F',
-                wind: data.list[i].wind.speed + ' MPH', //'8.43 MPH',
-                humidity: data.list[i].main.humidity + ' %', //'44 %',
+                temp: convertToDegreesFahrenheit(data.list[i].main.temp) + ' °F',
+                wind: data.list[i].wind.speed + ' MPH',
+                humidity: data.list[i].main.humidity + ' %',
             }
             information.push(weather)
         }
